@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <h1>Gary Simwawa - TECH2101</h1>
+      <h1>This is my Cloud Computing App for S3</h1>
     </div>
   );
 }
