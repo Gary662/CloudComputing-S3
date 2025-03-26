@@ -11,10 +11,11 @@ pipeline {
             }
             steps {
                 sh '''
+                    # list all files
                     ls -la
                     node --version
                     npm --version
-                    npm install
+                    # npm install
                     npm run build
                     ls -la
                 '''    
