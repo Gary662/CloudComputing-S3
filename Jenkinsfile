@@ -1,5 +1,9 @@
 pipeline {
     agent any
+     
+    environment {
+                AWS_S3_BUCKET = 'myjenkinsapp-20250325'
+    }
 
     stages {
         stage('Build') {
@@ -16,6 +20,7 @@ pipeline {
                     node --version
                     npm --version
                     # npm install
+                    npm ci
                     npm run build
                     ls -la
                 '''    
@@ -45,9 +50,7 @@ pipeline {
                     args ' --entrypoint=""'
                 }
             }
-            environment {
-                AWS_S3_BUCKET = 'myjenkinsapp-20250325'
-            }
+           
             steps {
                 withCredentials([usernamePassword(credentialsId: 'my-Cloud-Computing-S3', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     sh '''
